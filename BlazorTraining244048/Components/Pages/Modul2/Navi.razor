@@ -1,0 +1,26 @@
+﻿@page "/nava"
+@page "/navb"
+@inject NavigationManager navman
+<h3>Navi</h3>
+<a href="/nava">A</a><br />
+<a href="/nava">B</a>
+<br />
+<a href="/nava?id=1">A mit ID</a>
+<br />
+<button class="btn btn-outline-danger" @onclick="register">register</button>
+@id
+
+@code {
+    [SupplyParameterFromQuery()]
+    public int id { get; set; }
+    void register()
+    {
+
+        navman.LocationChanged += UrlChanged;
+    }
+    void UrlChanged(object sender,LocationChangedEventArgs args)
+    {
+        
+
+    }
+}
