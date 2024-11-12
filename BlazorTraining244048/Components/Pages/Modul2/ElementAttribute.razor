@@ -1,0 +1,29 @@
+﻿@page "/ELement"
+<h3>ElementAttribute</h3>
+<button @onclick="click">clicl</button>
+<hr />
+<input @bind="eingabe" @bind:event="oninput"/><br />
+<input @bind="eingabe" @onkeydown="keydown" />
+
+<Hannes @ref="hannes1"></Hannes>
+<hr />
+<input @ref="franz"/>
+@eingabe
+@code {
+    string eingabe;
+    Hannes hannes1;
+    ElementReference franz;
+    void click(MouseEventArgs args)
+    {
+
+        hannes1.id = 42;
+    }
+    void keydown(KeyboardEventArgs args)
+    {
+
+        if (args.Key=="H")
+        {
+            franz.FocusAsync();
+        }
+    }
+}
