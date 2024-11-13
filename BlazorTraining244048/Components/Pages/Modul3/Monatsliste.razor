@@ -4,13 +4,17 @@
     <div class="row">
         <div class="col-12 col-md-6">
             Monat
+            <h1>@DateTime.Now.AddMonths(gewählterMonat).ToString("MMMM")</h1>
         </div>
         <div class="col-12 col-md-6 ">
             <ul class="list-group">
                 <li class="list-group-item active" aria-current="true">Monate</li>
                 @for (int i = 0; i < 12; i++)
                 {
-                    <li class="list-group-item">@DateTime.Now.AddMonths(i).ToString("MMMM")</li>
+                    int m = i;
+                    <li class='list-group-item list-group-item-action @(gewählterMonat==m?"list-group-item-primary":"")'
+                    @onclick="()=>Auswahl(m)">
+                        @DateTime.Now.AddMonths(i).ToString("MMMM")</li>
                 }
             </ul>
         </div>
@@ -18,5 +22,10 @@
 
 </div>
 @code {
+    int gewählterMonat;
+    void Auswahl(int m)
+    {
 
+        gewählterMonat = m;
+    }
 }
