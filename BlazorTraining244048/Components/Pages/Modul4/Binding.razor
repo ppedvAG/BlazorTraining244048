@@ -1,0 +1,13 @@
+﻿@page "/binding"
+<h3>Binding</h3>
+<input @bind="Eingabe" @bind:event="oninput"/>
+<input @onchange="(_)=>save(_)" value="@Eingabe" />
+@code {
+    string Eingabe;
+
+    void save(ChangeEventArgs _args)
+    {
+        Eingabe = _args.Value.ToString();
+
+    }
+}
