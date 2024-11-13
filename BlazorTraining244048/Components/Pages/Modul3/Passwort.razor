@@ -18,17 +18,17 @@
     }
     protected override async Task OnInitializedAsync()
     {
+        var ret = await ls.GetAsync<string>("hannes");
+        if (ret.Success)
+        {
+            Eingabe = ret.Value; 
+        }
 
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            var ret = await ls.GetAsync<string>("hannes");
-            if (ret.Success)
-            {
-                Eingabe = ret.Value;  //Todo Wert leer
-            }
 
         }
     }
