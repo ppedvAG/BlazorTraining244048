@@ -1,0 +1,29 @@
+﻿<h3 @attributes="@Alles">Component @MyProperty</h3>
+<hr />
+@Titel
+<div>
+    @ItemContent
+</div>
+<div>empty
+    @EmptyContent
+</div>
+
+@code {
+    [Parameter]
+    public int MyProperty { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Alles { get; set; }
+    [Parameter]
+    [EditorRequired()]
+    public string Titel { get; set; }
+    [CascadingParameter]
+    public string MyProperty1 { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } //Konvention
+    [Parameter]
+    public RenderFragment ItemContent { get; set; }
+    [Parameter]
+    public RenderFragment EmptyContent { get; set; }
+
+}
+

@@ -1,0 +1,15 @@
+﻿@page "/uc"
+<h3>UseComponent </h3>
+TODO: String Parameter vs @("title")
+<CascadingValue Value='@("42")'>
+    <CascadingValue Value="42" Name="eins">
+        <Component MyProperty="42" style="width:50px;color:red" Titel="@titel">
+          
+            <ItemContent>  <p>das ist wunderbar <input /></p></ItemContent>
+            <EmptyContent>das ist leer</EmptyContent>
+        </Component>
+    </CascadingValue>
+</CascadingValue>
+@code {
+    string titel = "Halo Welt";
+}
