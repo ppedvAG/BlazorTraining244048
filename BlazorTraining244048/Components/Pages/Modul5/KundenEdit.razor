@@ -1,0 +1,12 @@
+﻿@page "/kunde/{CustomerId}/edit"
+@using BlazorTraining244048.Models
+@inject NorthwindContext VM
+
+<h3>KundenEdit</h3>
+@VM.Customers.Find(CustomerId).CompanyName
+
+@code {
+    [Parameter]
+    public string CustomerId { get; set; }
+
+}
