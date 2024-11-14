@@ -4,10 +4,20 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <form method="post" @onsubmit="filter">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Filter" @bind="Eingabe">
+                    <button class="btn btn-outline-secondary" type="submit" >Filter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <ul class="list-group">
                 <li class="list-group-item active" aria-current="true">Todos</li>
 
-                @foreach (var item in VM.TodoO.todos)
+                @foreach (var item in VM.TodoO.todos.Where(x => x.todo.Contains(Eingabe, StringComparison.CurrentCultureIgnoreCase)))
                 {
 
                     <li class='list-group-item  @(item.completed?"list-group-item-dark":"") '>
@@ -20,5 +30,9 @@
 
 </div>
 @code {
+    string Eingabe = "";
+    void filter()
+    {
 
+    }
 }
