@@ -1,6 +1,6 @@
 ﻿@page "/person"
 <h3>PersonEdit</h3>
-<EditForm  Model="VM" FormName="form1" OnSubmit="save">
+<EditForm  EditContext="ctx" FormName="form1" OnSubmit="save">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <div class="mb-3 row">
         <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
@@ -13,7 +13,7 @@
     <div class="mb-3 row">
         <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10">
-          
+
             <InputText class="form-control" @bind-Value="VM.Name"></InputText>
             <ValidationMessage For="()=>VM.Name"></ValidationMessage>
         </div>
@@ -41,13 +41,18 @@
 
 @code {
     Person VM = new();
+    EditContext ctx;
     void save(EditContext ctx)
     {
         if (ctx.Validate())
         {
-            
+
         }
 
     }
-
+    protected override void OnInitialized()
+    {
+        ctx = new EditContext(VM);
+        ctx.SetFieldCssClassProvider(new BootstrapErrorFixFieldClassCSSProvider());
+    }
 }
