@@ -1,0 +1,53 @@
+﻿@page "/person"
+<h3>PersonEdit</h3>
+<EditForm  Model="VM" FormName="form1" OnSubmit="save">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+
+            <InputTextPPEDV class="form-control" @bind-Value="VM.Name" style="width=50px;" hannes="sepp"></InputTextPPEDV>
+            <ValidationMessage For="()=>VM.Name"></ValidationMessage>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          
+            <InputText class="form-control" @bind-Value="VM.Name"></InputText>
+            <ValidationMessage For="()=>VM.Name"></ValidationMessage>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Größe</label>
+        <div class="col-sm-10">
+
+            <InputNumber class="form-control" @bind-Value="VM.Gross" step="0.1"></InputNumber>
+            <ValidationMessage For="()=>VM.Gross"></ValidationMessage>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Datum</label>
+        <div class="col-sm-10">
+
+            <InputDate class="form-control" @bind-Value="VM.GebDat"></InputDate>
+            <ValidationMessage For="()=>VM.GebDat"></ValidationMessage>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">save</button>
+    <ValidationSummary></ValidationSummary>
+</EditForm>
+
+@code {
+    Person VM = new();
+    void save(EditContext ctx)
+    {
+        if (ctx.Validate())
+        {
+            
+        }
+
+    }
+
+}

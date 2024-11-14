@@ -1,0 +1,7 @@
+﻿@inherits InputText
+<input @bind="CurrentValue"
+       class="@CssClass"
+       @bind:event="oninput"
+       @attributes="AdditionalAttributes" />
+@CurrentValueAsString
+
