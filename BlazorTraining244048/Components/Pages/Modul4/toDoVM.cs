@@ -7,7 +7,7 @@
         {
             using (var client= _http.CreateClient())
             {
-                TodoO = client.GetFromJsonAsync<ToDoModel>("https://dummyjson.com/todos").Result;
+                TodoO = client.GetFromJsonAsync<ToDoModel>("https://dummyjson.com/todos?limit=300").Result;
             }
         }
     }
