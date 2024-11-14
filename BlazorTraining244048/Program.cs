@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddSingleton<ChatVM>();
 builder.Services.AddScoped<ToDoVM>();
 builder.Services.AddHttpClient();
 var app = builder.Build();

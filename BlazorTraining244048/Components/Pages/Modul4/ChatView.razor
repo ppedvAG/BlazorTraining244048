@@ -1,0 +1,46 @@
+﻿@page "/chat"
+@inject ChatVM VM
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="post" @onsubmit="send">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="deine Nachricht" @bind="Eingabe">
+                    <button class="btn btn-outline-secondary" type="submit">send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+
+
+                @foreach (var item in VM.Liste)
+                {
+
+                    <li  class='list-group-item   '>
+                        @item.Nachricht
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+</div>
+@code {
+    string Eingabe = "";
+    void send()
+    {
+        VM.Add(Eingabe);
+    }
+    protected override void OnInitialized()
+    {
+        VM.OnAdd += UpdateUi;
+    }
+    void UpdateUi()
+    {
+      
+        InvokeAsync(StateHasChanged);
+    }
+}
