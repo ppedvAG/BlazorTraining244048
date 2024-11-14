@@ -11,7 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<ChatVM>();
 builder.Services.AddScoped<ToDoVM>();
 builder.Services.AddHttpClient();
-builder.Services.AddDbContext<NorthwindContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("nortwind")));
+builder.Services.AddDbContext<NorthwindContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("northwind")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

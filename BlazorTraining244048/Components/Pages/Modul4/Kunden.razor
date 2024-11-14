@@ -1,0 +1,34 @@
+﻿@page "/kunden"
+@using BlazorTraining244048.Models
+@inject NorthwindContext VM
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Filter" @bind="Eingabe" @bind:event="oninput"/>
+                    <button class="btn btn-outline-secondary" type="button">filter</button>
+                </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+
+
+                @foreach (var item in VM.Customers.Where(x=>x.CompanyName.Contains(Eingabe)))
+                {
+
+                    <li class='list-group-item   '>
+                        @item.CustomerId  @item.CompanyName
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+</div>
+@code {
+    string Eingabe = "";
+}
