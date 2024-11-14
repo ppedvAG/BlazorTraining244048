@@ -1,5 +1,7 @@
 using BlazorTraining244048.Components;
 using BlazorTraining244048.Components.Pages.Modul4;
+using BlazorTraining244048.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<ChatVM>();
 builder.Services.AddScoped<ToDoVM>();
 builder.Services.AddHttpClient();
+builder.Services.AddDbContext<NorthwindContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("nortwind")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
