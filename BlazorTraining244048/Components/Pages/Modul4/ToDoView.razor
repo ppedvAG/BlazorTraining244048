@@ -20,7 +20,7 @@
                 @foreach (var item in VM.TodoO.todos.Where(x => x.todo.Contains(Eingabe, StringComparison.CurrentCultureIgnoreCase)))
                 {
 
-                    <li class='list-group-item  @(item.completed?"list-group-item-dark":"") '>
+                    <li @key="item.id" class='list-group-item  @(item.completed?"list-group-item-dark":"") '>
                         @item.todo
                     </li>
                 }
