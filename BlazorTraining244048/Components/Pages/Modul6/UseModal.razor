@@ -1,0 +1,33 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+
+<button type="button" class="btn btn-primary" @onclick="anzeigen">
+    Launch demo modal
+</button>
+<ModalPPEDV @ref="modal1" Titel="Bitte um Ihre Eingabe" OnClick="save">
+    <div class="row">
+        <div class="col">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="deine Nachricht" @bind="Eingabe">
+
+            </div>
+
+        </div>
+    </div>
+</ModalPPEDV>
+@code {
+    string Eingabe;
+    ModalPPEDV modal1;
+    void anzeigen()
+    {
+        modal1.Show();
+
+    }
+    void save()
+    {
+        Eingabe = "";
+        modal1.Show();
+    }
+
+}

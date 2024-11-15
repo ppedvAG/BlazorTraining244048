@@ -1,0 +1,37 @@
+﻿@if (IsVisible)
+{
+
+    <div class="modal fade show" tabindex="-1" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" >@Titel</h1>
+                    <button type="button" class="btn-close" @onclick="Show" ></button>
+                </div>
+                <div class="modal-body">
+                  @ChildContent
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="Show">Close</button>
+                    <button type="button" class="btn btn-primary" @onclick="()=>OnClick.InvokeAsync()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+@code {
+    bool IsVisible;
+    [Parameter]
+    public string Titel { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+    public void Show()
+    {
+        IsVisible = !IsVisible;
+        StateHasChanged();
+    }
+}
