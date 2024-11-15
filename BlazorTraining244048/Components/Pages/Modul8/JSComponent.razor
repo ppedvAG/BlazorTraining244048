@@ -1,0 +1,31 @@
+﻿@page "/js"
+@inject IJSRuntime JSRuntime
+<h3>JSComponent</h3>
+<button @onclick="alert">alert</button>
+<br />
+<button @onclick="prompt">prompt</button>
+<br />
+<button @onclick="jsmodul">Modul</button>
+<br />@Eingabe
+@code {
+    string Eingabe;
+    void alert()
+    {
+        // JSRuntime.InvokeVoidAsync("alert", "Hallo Welt");
+        JSRuntime.InvokeVoidAsync("ppedv", "Hallo Welt");
+        JSRuntime.InvokeVoidAsync("eval", "document.title='42'");
+    }
+    async Task prompt()
+    {
+        Eingabe=await   JSRuntime.InvokeAsync<string>("prompt", "gibs mir");
+    }
+    void jsmodul()
+    {
+        modul.InvokeVoidAsync("ppedv", "Hallo Welt");
+    }
+    IJSObjectReference modul;
+    protected override async Task OnInitializedAsync()
+    {
+       modul=await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Components/Pages/Modul8/jsComponent.razor.js");
+    }
+}
