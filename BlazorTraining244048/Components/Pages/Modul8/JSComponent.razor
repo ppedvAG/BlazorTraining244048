@@ -6,7 +6,10 @@
 <button @onclick="prompt">prompt</button>
 <br />
 <button @onclick="jsmodul">Modul</button>
-<br />@Eingabe
+<br />
+<button @onclick="lib">Library</button>
+<br />
+@Eingabe
 @code {
     string Eingabe;
     void alert()
@@ -22,6 +25,13 @@
     void jsmodul()
     {
         modul.InvokeVoidAsync("ppedv", "Hallo Welt");
+    }
+    async Task lib()
+    {
+        var j = new RazorClassLibrary1.ExampleJsInterop(JSRuntime);
+
+
+        Eingabe= await j.Prompt("eingabe");
     }
     IJSObjectReference modul;
     protected override async Task OnInitializedAsync()

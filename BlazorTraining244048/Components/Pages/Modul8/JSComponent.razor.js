@@ -1,3 +1,5 @@
 ﻿export function ppedv(msg) {
-    alert("modul:"+msg);
+    alert("modul:" + msg);
+
+
 }
